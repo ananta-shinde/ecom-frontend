@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AdminDashboard from "../admin/AdminDashboard";
+import AddNewProductForm from "../admin/components/AddNewProductForm";
 
 const router = createBrowserRouter([
   {
@@ -9,6 +10,12 @@ const router = createBrowserRouter([
   {
     path:"/admin/dashboard",
     element:<AdminDashboard/>
+
+  },
+   {
+    path:"/admin/AddNewProducts",
+    element:<AddNewProductForm/>
+    
   }
 ]);
 
