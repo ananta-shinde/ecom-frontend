@@ -4,6 +4,9 @@ import Home from "../customer/Home";
 import ProductListing from "../customer/ProductListing";
 import BaseTemplate from "../templates/BaseTemplate";
 import AddNewProductForm from "../admin/components/AddNewProductForm";
+import SignUp from "../customer/SignUp";
+import SignIn from "../customer/SignIn";
+import ForgotPassword from "../customer/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,7 @@ const router = createBrowserRouter([
       }
     ]
   },
+
   {
     path:"/admin/dashboard",
     element:<AdminDashboard/>
@@ -28,7 +32,20 @@ const router = createBrowserRouter([
    {
     path:"/admin/AddNewProducts",
     element:<AddNewProductForm/>
-    
+
+   },
+   
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/signin",
+    element: <SignIn />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   }
 ]);
 
