@@ -7,6 +7,12 @@ import AddNewProductForm from "../admin/components/AddNewProductForm";
 import SignUp from "../customer/SignUp";
 import SignIn from "../customer/SignIn";
 import ForgotPassword from "../customer/ForgotPassword";
+import AdminTemplate from "../templates/AdminTemplate";
+import AdminNavbar from "../admin/components/AdminNavbar";
+import AdminSideNav from "../admin/components/AdminSideNav";
+import ViewAllProducts from "../admin/components/ViewAllProducts";
+import ViewAllCategories from "../admin/components/ViewAllCategories";
+import EditProductForm from "../admin/components/EditProductForm";
 import ProductDetail from "../customer/ProductDetail";
 
 const router = createBrowserRouter([
@@ -31,14 +37,26 @@ const router = createBrowserRouter([
 
   {
     path:"/admin/dashboard",
-    element:<AdminDashboard/>
-
+    element:<AdminTemplate/>,
+    children:[
+      {
+        path:"/admin/dashboard/addnewproduct",
+        element:<AddNewProductForm/>
+      },
+       {
+        path:"/admin/dashboard/viewallproducts",
+        element:<ViewAllProducts/>
+      },
+      {
+        path:"/admin/dashboard/viewallcategories",
+        element:<ViewAllCategories/>
+      },
+       {
+        path:"/admin/dashboard/editproduct/:id",
+        element:<EditProductForm/>
+      }
+    ]
   },
-   {
-    path:"/admin/AddNewProducts",
-    element:<AddNewProductForm/>
-
-   },
    
   {
     path: "/signup",
