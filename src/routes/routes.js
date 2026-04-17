@@ -7,6 +7,7 @@ import AddNewProductForm from "../admin/components/AddNewProductForm";
 import SignUp from "../customer/SignUp";
 import SignIn from "../customer/SignIn";
 import ForgotPassword from "../customer/ForgotPassword";
+import ProductDetail from "../customer/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductListing />
+      },
+      {
+        path: "details",
+        element: <ProductDetail />
       }
     ]
   },
