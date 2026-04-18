@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddCategory = () => {
+const AddBrand = () => {
   const [categoryName, setCategoryName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
@@ -97,4 +97,4 @@ const AddCategory = () => {
   );
 };
 
-export default AddCategory;
+export default AddBrand;
