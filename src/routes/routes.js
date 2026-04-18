@@ -14,6 +14,7 @@ import ViewAllProducts from "../admin/components/ViewAllProducts";
 import ViewAllCategories from "../admin/components/ViewAllCategories";
 import EditProductForm from "../admin/components/EditProductForm";
 import ProductDetail from "../customer/ProductDetail";
+import Cart from "../customer/Cart";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "details",
         element: <ProductDetail />
+      },
+      {
+        path: "cart",
+        element: <Cart />
       }
     ]
   },
