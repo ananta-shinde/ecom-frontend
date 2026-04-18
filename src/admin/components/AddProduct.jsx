@@ -1,4 +1,4 @@
-import React, { useState, useEffect,handleClear } from 'react';
+import React, { useState, useEffect, handleClear } from 'react';
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -14,7 +14,7 @@ const AddProduct = () => {
   const [thumbnail, setThumbnail] = useState(null);
 
   // Note: In a real app, you'd fetch these from your API on mount
-  const [brands, setBrands] = useState([]); 
+  const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData();
     formData.append('name', product.name);
     formData.append('description', product.description);
@@ -32,7 +32,7 @@ const AddProduct = () => {
     formData.append('stockQuantity', product.stockQuantity);
     formData.append('brandId', product.brandId);
     formData.append('categoryId', product.categoryId);
-    
+
     // Append files
     if (thumbnail) formData.append('thumbnailImage', thumbnail);
     images.forEach((img) => formData.append('images', img));
@@ -49,7 +49,7 @@ const AddProduct = () => {
         </div>
         <div className="card-body p-4">
           <form onSubmit={handleSubmit} className="row g-3">
-            
+
             {/* Basic Info */}
             <div className="col-md-8">
               <label className="form-label fw-bold">Product Name</label>
@@ -104,8 +104,8 @@ const AddProduct = () => {
 
             <div className="col-12 mt-4">
               <button type="submit" className="btn btn-success btn-lg w-100">Upload Product</button>
-              <button type="button" className="btn btn-outline-secondary w-100 my-2" onClick={handleClear}>
-                      Clear Form
+              <button type="button" className="btn btn-outline-secondary w-100 my-2" >
+                Clear Form
               </button>
             </div>
           </form>
