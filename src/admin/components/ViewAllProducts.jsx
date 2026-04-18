@@ -17,7 +17,7 @@ const ViewAllProducts = () => {
         <div className="container mt-4">
             <h3 className="mb-4 text-secondary">Product List</h3>
 
-            <div className="border rounded shadow-sm p-3 bg-white">
+            <div className="border rounded shadow-sm p-3 bg-white overflow-auto" style={{ maxHeight: "75vh" }}>
 
                 <div className="row border-bottom pb-2 mb-2 fw-bold text-muted">
                     <div className="col-9">Product Name</div>

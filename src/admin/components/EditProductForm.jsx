@@ -5,7 +5,7 @@ const EditProductForm = () => {
     const [file, setFile] = useState(null);
     const { id } = useParams();
 
-    // Instead of one formData object, make a separate state for each piece of data
+
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [thumbnail, setThumbnail] = useState("");
@@ -24,10 +24,6 @@ const EditProductForm = () => {
             });
     }, [id]);
 
-    function handleChange(e) {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }
     const HandleSubmit = (e) => {
         e.preventDefault();
 

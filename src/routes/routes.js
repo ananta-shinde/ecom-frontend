@@ -14,13 +14,19 @@ import ViewAllProducts from "../admin/components/ViewAllProducts";
 import ViewAllCategories from "../admin/components/ViewAllCategories";
 import EditProductForm from "../admin/components/EditProductForm";
 import ProductDetail from "../customer/ProductDetail";
+import AddBrand from "../admin/components/AddBrand";
+import AddCategory from "../admin/components/AddCategory";
+import ViewAllBrands from "../admin/components/ViewAllBrands";
+import ViewAllOffers from "../admin/components/ViewAllOffers";
+import ViewAllCustomers from "../admin/components/ViewAllCustomers";
+import AddProduct from "../admin/components/AddProduct";
 import Cart from "../customer/Cart";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<BaseTemplate />,
-    children:[
+    path: "/",
+    element: <BaseTemplate />,
+    children: [
       {
         path: "",
         element: <Home />
@@ -41,28 +47,49 @@ const router = createBrowserRouter([
   },
 
   {
-    path:"/admin/dashboard",
-    element:<AdminTemplate/>,
-    children:[
+    path: "/admin/dashboard",
+    element: <AdminTemplate />,
+    children: [
       {
-        path:"/admin/dashboard/addnewproduct",
-        element:<AddNewProductForm/>
+        path: "/admin/dashboard/addnewproduct",
+        element: <AddProduct />
       },
-       {
-        path:"/admin/dashboard/viewallproducts",
-        element:<ViewAllProducts/>
+
+      {
+        path: "/admin/dashboard/addnewbrand",
+        element: <AddBrand />
       },
       {
-        path:"/admin/dashboard/viewallcategories",
-        element:<ViewAllCategories/>
+        path: "/admin/dashboard/addnewcategory",
+        element: <AddCategory />
       },
-       {
-        path:"/admin/dashboard/editproduct/:id",
-        element:<EditProductForm/>
+      {
+        path: "/admin/dashboard/viewallproducts",
+        element: <ViewAllProducts />
+      },
+      {
+        path: "/admin/dashboard/viewallcategories",
+        element: <ViewAllCategories />
+      },
+      {
+        path: "/admin/dashboard/viewallbrands",
+        element: <ViewAllBrands />
+      },
+      {
+        path: "/admin/dashboard/viewalloffers",
+        element: <ViewAllOffers />
+      },
+      {
+        path: "/admin/dashboard/customers",
+        element: <ViewAllCustomers />
+      },
+      {
+        path: "/admin/dashboard/editproduct/:id",
+        element: <EditProductForm />
       }
     ]
   },
-   
+
   {
     path: "/signup",
     element: <SignUp />,
@@ -76,5 +103,6 @@ const router = createBrowserRouter([
     element: <ForgotPassword />,
   }
 ]);
+
 
 export default router;
