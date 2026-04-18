@@ -47,7 +47,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/admin/dashboard",
+    path: "/admin/dashboard/",
     element: <AdminTemplate />,
     children: [
       {
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <ViewAllCategories />
       },
       {
-        path: "/admin/dashboard/viewallbrands",
+        path: "brands",
         element: <ViewAllBrands />
       },
       {

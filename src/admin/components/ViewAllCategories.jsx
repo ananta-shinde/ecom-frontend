@@ -6,12 +6,25 @@ const ViewAllCategories = () => {
     const [categorylist, setcategorylist] = useState([]);
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products/category-list')
+        fetch('http://localhost:8080/api/v1/category')
             .then(res => res.json())
             .then(res => {
-                setcategorylist(res);
+                setcategorylist(res.categories);
             });
     }, []);
+
+    const handleDelete = async(category)=>{
+       console.log(category)
+       const response = await fetch('http://localhost:8080/api/v1/category/update', {
+            method: 'PUT',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            // Note: Do NOT set 'Content-Type' header when sending FormData. 
+            // The browser automatically sets it to 'multipart/form-data' with the correct boundary.
+            body: JSON.stringify({...category,deleted:true}),
+          });
+    }
 
     return (
         <div className="container mt-4">
@@ -29,22 +42,22 @@ const ViewAllCategories = () => {
 
                         <div className="col-9">
                             <Link className="text-decoration-none text-dark fw-semibold">
-                                {c}
+                                {c.name}
                             </Link>
                         </div>
 
                         <div className="col-3 d-flex justify-content-end gap-2">
                             <button className="btn btn-sm btn-outline-primary">
-                                <Link  className="text-decoration-none text-dark fw-semibold d-flex align-items-center justify-content-center">
+                                <Link to={"/admin/dashboard/addnewcategory?cmd=update&id="+c.id}  className="text-decoration-none text-dark fw-semibold d-flex align-items-center justify-content-center">
                                     Edit
                                     <PencilIcon width={20} className="ps-1" />
                                 </Link>
                             </button>
-                            <button className="btn btn-sm btn-outline-danger">
-                                <Link className="text-decoration-none text-dark fw-semibold d-flex align-items-center justify-content-center">
+                            <button className="btn btn-sm btn-outline-danger"   onClick={()=>{handleDelete(c)}}>
+                               
                                 Delete
                                     <DeleteIcon width={20} className="ps-1" />
-                                </Link>
+                               
                             </button>
                         </div>
 
