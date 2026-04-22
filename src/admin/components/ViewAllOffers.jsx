@@ -86,6 +86,12 @@ const ViewAllOffers = () => {
 
                     </div>
                 ))}
+
+                {offers.length === 0 && (
+                    <div className="text-center text-muted mt-4">
+                        No Offers found.
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -89,6 +89,12 @@ const ViewAllCustomers = () => {
 
                     </div>
                 ))}
+
+                {customers.length === 0 && (
+                    <div className="text-center text-muted mt-4">
+                        No Customers found.
+                    </div>
+                )}
             </div>
         </>
     );
