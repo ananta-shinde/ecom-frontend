@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CartProducts from "./CartProducts";
 import { TicketPercent } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 
@@ -46,7 +47,7 @@ const Cart = () => {
 
                     <div className="d-flex align-items-center bg-light shadow p-3">
                         <p className="w-50 ">₹ {cart[0]?.discountedTotal}</p>
-                        <button className="btn btn-warning w-50 p-2">Place Order</button>
+                        <button className="btn btn-warning w-50 p-2"><Link to={"/checkout"} className="text-decoration-none text-dark">Place Order</Link></button>
                     </div>
                 </div>
             </div>

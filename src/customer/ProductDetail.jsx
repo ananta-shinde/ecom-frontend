@@ -5,6 +5,7 @@ import ProductDetailSlider from "./ProductDetailSlider";
 const ProductDetail = () => {
 
     const [searchParams] = useSearchParams()
+    const [rating, setRating] = useState(0);
     const [product, setproduct] = useState({})
     const [activeTab, setActiveTab] = useState('reviews');
 
@@ -28,7 +29,7 @@ const ProductDetail = () => {
                             <button className="btn btn-success shadow border w-100"><Link to={"/cart"} className="text-decoration-none text-white">ADD TO BAG</Link></button>
                         </div>
                         <div className="col">
-                            <button className="btn btn-dark shadow border w-100">BUY NOW</button>
+                            <button className="btn btn-dark shadow border w-100"><Link to={"/checkout"} className="text-decoration-none text-white">BUY NOW</Link></button>
                         </div>
                     </div>
                 </div>
@@ -84,6 +85,30 @@ const ProductDetail = () => {
                                         <p className="badge bg-success mx-4 m-0">{product.rating} ★</p>
                                         <p className="m-0 text-muted">{product.reviews?.length} Ratings & Reviews</p>
                                     </div>
+                                    <form>
+                                    <div className="card p-4 mb-3 shadow-sm">
+                                        <p className="fw-bold mb-2">
+                                            <span className="fs-5">Give Review : </span>
+                                        </p>
+                                        <div>
+                                            {[1, 2, 3, 4, 5].map((star) => (
+                                                <span
+                                                    key={star}
+                                                    style={{
+                                                        fontSize: "24px",
+                                                        cursor: "pointer",
+                                                        color: star <= rating ? "green" : "gray",
+                                                    }}
+                                                    onClick={() => setRating(star)}
+                                                >
+                                                    ★
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <input type="text" className="form-control my-3" name="comment" placeholder="Enter review" /> 
+                                        <button type="submit" className="btn btn-dark w-100">Post</button>
+                                    </div>
+                                    </form>
 
                                     {product.reviews?.map((review, index) => (
                                         <div className="card p-4 mb-3 shadow-sm" key={index}>

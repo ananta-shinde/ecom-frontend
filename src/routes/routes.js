@@ -21,6 +21,9 @@ import ViewAllOffers from "../admin/components/ViewAllOffers";
 import ViewAllCustomers from "../admin/components/ViewAllCustomers";
 import AddProduct from "../admin/components/AddProduct";
 import Cart from "../customer/Cart";
+import ViewAllSellers from "../admin/components/ViewAllSellers";
+import Checkout from "../customer/Checkout";
+import AddOffer from "../admin/components/addOffer";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />
+      },
+      {
+        path: "checkout",
+        element: <Checkout />
       }
     ]
   },
@@ -64,6 +71,10 @@ const router = createBrowserRouter([
         element: <AddCategory />
       },
       {
+        path: "/admin/dashboard/addnewoffer",
+        element: <AddOffer />
+      },
+      {
         path: "/admin/dashboard/viewallproducts",
         element: <ViewAllProducts />
       },
@@ -82,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/dashboard/customers",
         element: <ViewAllCustomers />
+      },
+      {
+        path: "/admin/dashboard/sellers",
+        element: <ViewAllSellers />
       },
       {
         path: "/admin/dashboard/editproduct/:id",

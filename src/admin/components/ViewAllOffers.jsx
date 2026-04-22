@@ -1,94 +1,89 @@
+import { PencilIcon, Trash2Icon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 const ViewAllOffers = () => {
-    const offersList = [
-        {
-            id: 1,
-            title: "Summer Blowout Sale",
-            description: "Get 20% off on all clothing and apparel.",
-            discountPercentage: 20,
-            promoCode: "SUMMER20",
-            validUntil: "2026-08-31",
-            isActive: true
-        },
-        {
-            id: 2,
-            title: "Tech Upgrade Promo",
-            description: "Flat 10% discount on smartphones and laptops.",
-            discountPercentage: 10,
-            promoCode: "TECH10",
-            validUntil: "2026-05-15",
-            isActive: true
-        },
-        {
-            id: 3,
-            title: "Welcome Bonus",
-            description: "Special 15% off for first-time buyers on any category.",
-            discountPercentage: 15,
-            promoCode: "WELCOME15",
-            validUntil: "2026-12-31",
-            isActive: true
-        },
-        {
-            id: 4,
-            title: "Flash Sale Friday",
-            description: "Massive 50% off on selected skincare products.",
-            discountPercentage: 50,
-            promoCode: "FLASH50",
-            validUntil: "2026-04-24", 
-            isActive: false 
-        },
-        {
-            id: 5,
-            title: "Holiday Mega Bundle",
-            description: "Buy more, save more! 30% off site-wide during the holidays.",
-            discountPercentage: 30,
-            promoCode: "HOLIDAY30",
-            validUntil: "2027-01-05",
-            isActive: false
-        }
-    ];
+    const [offers, setOffers] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/v1/offer")
+            .then(res => res.json())
+            .then(res => {
+                setOffers(res.offers)
+            })
+    }, []);
+
+    const handleDelete = async(offer)=>{
+       console.log(offer)
+       const response = await fetch('http://localhost:8080/api/v1/offer/update', {
+            method: 'PUT',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            // Note: Do NOT set 'Content-Type' header when sending FormData. 
+            // The browser automatically sets it to 'multipart/form-data' with the correct boundary.
+            body: JSON.stringify({...offer,deleted:!offer.deleted }),
+          });
+        
+          setOffers(prev => prev.map(o => o.id === offer.id ? {...o , deleted: !o.deleted}:o))
+          if(response.ok){
+            alert("Activation Changes Successfully");
+          } else{
+            alert("Something went wrong!")
+          }
+
+        
+    }
 
     return (
         <div className="container mt-4 mb-5">
             <h3 className="mb-4 text-secondary">Manage Offers</h3>
-            
+
             <div className="border rounded shadow-sm bg-white p-3">
-                
-                <div className="row border-bottom pb-2 mb-2 fw-bold text-muted align-items-center">
-                    <div className="col-4">Offer Title</div>
+
+                <div className="row border-bottom pb-2 px-4 mb-2 fw-bold text-muted align-items-center">
+                    <div className="col-3">Offer Title</div>
+                    <div className="col-2 text-center">Description</div>
                     <div className="col-2 text-center">Discount</div>
-                    <div className="col-2 text-center">Promo Code</div>
                     <div className="col-2 text-center">Status</div>
-                    <div className="col-2 text-end">Actions</div>
+                    <div className="col-3 text-center">Actions</div>
                 </div>
 
-                {offersList.map(offer => (
-                    <div className="row border-bottom py-3 align-items-center" key={offer.id}>
-                        
-                        <div className="col-4">
+                {offers?.map(offer => (
+                    <div className="row border-bottom py-3  align-items-center" key={offer.id}>
+
+                        <div className="col-3">
                             <div className="fw-bold">{offer.title}</div>
-                            <small className="text-muted">Valid till: {offer.validUntil}</small>
                         </div>
-                        
+
                         <div className="col-2 text-center text-success fw-semibold">
-                            {offer.discountPercentage}% OFF
+                            {offer.description}
                         </div>
-                        
-                        <div className="col-2 text-center">
-                            <span className="badge bg-light text-dark border">{offer.promoCode}</span>
+
+                        <div className="col-2 text-center text-success fw-semibold">
+                            {offer.discount}% OFF
                         </div>
-                        
+
                         <div className="col-2 text-center">
-                            {offer.isActive ? (
-                                <span className="badge bg-success">Active</span>
+                            {offer.deleted ? (
+                                <span className="badge bg-secondary">InActive</span>
                             ) : (
-                                <span className="badge bg-secondary">Inactive</span>
+                                <span className="badge bg-success">Active</span>
                             )}
                         </div>
-                        
-                        <div className="col-2 text-end">
-                            <button className="btn btn-sm btn-outline-primary">Edit</button>
+
+                        <div className="col-3 text-start">
+                            <button className="btn btn-outline-dark bg-light w-20"><Link to={"/admin/dashboard/addnewoffer?cmd=update&id=" + offer.id} className="text-decoration-none text-dark fw-semibold d-flex align-items-center justify-content-center">
+                                Edit
+                                <PencilIcon width={20} className="ps-1" />
+                            </Link></button>
+                            <button className="ms-2 btn btn-outline-danger bg-danger-subtle w-50" onClick={()=>{handleDelete(offer)}}>
+                                {offer.deleted ? 'Activate' : 'Deactivate'}
+                                <Trash2Icon width={20} className="ps-1" />
+                            </button>
+                            
                         </div>
-                        
+
                     </div>
                 ))}
             </div>
