@@ -45,7 +45,7 @@ const AdminSideNav = () => {
                         <Link to="/admin/dashboard/addnewbrand" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
                             <strong>Add New Brand</strong>
                         </Link>
-                        <Link to="/admin/dashboard/viewallbrands" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
+                        <Link to="/admin/dashboard/brands" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
                             <strong>View All Brands</strong>
                         </Link>
                     </div>

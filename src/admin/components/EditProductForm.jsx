@@ -2,37 +2,37 @@ import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 
 const EditProductForm = () => {
-    const [file, setFile] = useState(null);
-    const { id } = useParams();
+    // const [file, setFile] = useState(null);
+    // const { id } = useParams();
 
 
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState("");
-    const [thumbnail, setThumbnail] = useState("");
-    const [brand, setBrand] = useState("");
-    const [category, setcategory] = useState("");
+    // const [title, setTitle] = useState("");
+    // const [price, setPrice] = useState("");
+    // const [thumbnail, setThumbnail] = useState("");
+    // const [brand, setBrand] = useState("");
+    // const [category, setcategory] = useState("");
 
-    useEffect(() => {
-        fetch(`https://dummyjson.com/products/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setTitle(data.title || "");
-                setPrice(data.price || "");
-                setThumbnail(data.thumbnail || "");
-                setBrand(data.brand || "");
-                setcategory(data.category || "");
-            });
-    }, [id]);
+    // useEffect(() => {
+    //     fetch(`https://dummyjson.com/products/${id}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setTitle(data.title || "");
+    //             setPrice(data.price || "");
+    //             setThumbnail(data.thumbnail || "");
+    //             setBrand(data.brand || "");
+    //             setcategory(data.category || "");
+    //         });
+    // }, [id]);
 
-    const HandleSubmit = (e) => {
-        e.preventDefault();
+    // const HandleSubmit = (e) => {
+    //     e.preventDefault();
 
-    }
+    // }
 
     return (
 
         <>
-            <div className="container">
+            {/* <div className="container">
                 <div className="row">
                     <div className="col-6 offset-3 ">
                         <form onSubmit={HandleSubmit} className="mt-5 bg-light p-4 rounded-5 text-dark">
@@ -77,7 +77,7 @@ const EditProductForm = () => {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
