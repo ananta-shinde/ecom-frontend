@@ -37,11 +37,12 @@ const ViewAllSellers = () => {
     return (
         <>
             <div className="container mt-5 ">
+                <h3 className="my-4 text-muted">Sellers : </h3>
                 <div className="row border-bottom pb-2 mb-2 fw-bold text-muted align-items-center">
                     <div className="col-4">Sellers</div>
                     <div className="col-4">Contact Info</div>
-                    <div className="col-2 text-center">Orders / Spent</div>
-                    <div className="col-2 text-center">Status</div>
+                    {/* <div className="col-2 text-center">Orders / Spent</div> */}
+                    <div className="col-4 text-center">Status</div>
                 </div>
 
                 {sellers?.map(seller => (
@@ -56,13 +57,13 @@ const ViewAllSellers = () => {
                             <div>{seller.email}</div>
                             <small className="text-muted">{seller.contact}</small>
                         </div>
-
+{/* 
                         <div className="col-2 text-center">
                             <div className="fw-semibold">{seller.totalOrders}</div>
                             <small className="text-success">Rs.{(seller.totalSpent || 0).toFixed(2)}</small>
-                        </div>
+                        </div> */}
 
-                        <div className="col-2 text-center d-flex justify-content-center align-items-center">
+                        <div className="col-4 text-center d-flex justify-content-center align-items-center">
 
                             <span className={`badge ${seller.deleted ? 'bg-secondary' : 'bg-success'}`}>
                                 {seller.deleted ? 'Inactive' : 'Active'}
