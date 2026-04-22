@@ -129,7 +129,7 @@ const AddOffer = () => {
                                         className="form-control"
                                         name="description"
                                         rows="4"
-                                        placeholder="Describe the brand..."
+                                        placeholder="Describe the offer..."
                                         value={formData.description}
                                         onChange={handleChange}
                                         required
@@ -156,7 +156,7 @@ const AddOffer = () => {
 
                                 <div className="d-grid gap-2">
                                     <button type="submit" className="btn btn-success btn-lg" disabled={isLoading}>
-                                        {isLoading ? 'Saving...' : 'Save Brand'}
+                                        {isLoading ? 'Saving...' : 'Save Offer'}
                                     </button>
                                     <button type="button" className="btn btn-outline-secondary" onClick={() => {
                                         {
