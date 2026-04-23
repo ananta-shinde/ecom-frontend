@@ -6,10 +6,10 @@ const ProductListing = () => {
     const [products , setproducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
+        fetch('http://localhost:8080/api/v1/product')
         .then(res => res.json())
         .then(res => (
-            setproducts(res.products)
+            setproducts(res)
         ));
     },[]);
 

@@ -10,7 +10,7 @@ const ProductDetail = () => {
     const [activeTab, setActiveTab] = useState('reviews');
 
     useEffect(() => {
-        fetch('https://dummyjson.com/products/' + searchParams.get("productId"))
+        fetch('http://localhost:8080/api/v1/product/' + searchParams.get("productId"))
             .then(res => res.json())
             .then(res => (
                 setproduct(res)
@@ -20,10 +20,12 @@ const ProductDetail = () => {
     return (
         <div className="container p-3">
             <div className="row">
-                <div className="col col-md-5 p-5">
+                <div className="col col-md-5 p-5 justify-content-center align-content-center">
 
-                    <ProductDetailSlider product={product} />
-
+                    <div className="" >
+                        <ProductDetailSlider product={product} />
+                    </div>
+        
                     <div className="row">
                         <div className="col">
                             <button className="btn btn-success shadow border w-100"><Link to={"/cart"} className="text-decoration-none text-white">ADD TO BAG</Link></button>
@@ -34,7 +36,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
                 <div className="col col-md-7 mt-md-5" style={{ maxHeight: "75vh", overflowY: "auto" }}>
-                    <h2>{product.title}</h2>
+                    <h2>{product.name}</h2>
                     <hr />
                     <p>{product.description}</p>
 
@@ -42,18 +44,19 @@ const ProductDetail = () => {
 
                     <p className="fs-5">
                         <span className="text-muted text-decoration-line-through">₹ {product.price}</span>
-                        <span className="ms-4 text-success">{product.discountPercentage}% off</span>
+                        <span className="ms-4 text-success">5% off</span>
                     </p>
                     <hr />
-                    <p className="fs-4 fw-bold">₹ {(product.price - (product.price * product.discountPercentage / 100)).toFixed(2)}</p>
+                    <p className="fs-4 fw-bold">₹ {(product.price - (product.price * 5 / 100)).toFixed(2)}</p>
                     <hr />
                     <p>
                         <span className="badge bg-success me-3">{product.rating} ★</span>
                         <span className=""><a href="#review" className="text-decoration-none text-dark">{product.reviews?.length} Ratings & Reviews</a></span>
                     </p>
-                    <p className="fw-bold">{product.shippingInformation}</p>
+                    {/* <p className="fw-bold">{product.shippingInformation}</p> */}
                     <hr />
-                    <p>It comes with {product.warrantyInformation}</p>
+                    {/* <p>It comes with {product.warrantyInformation}</p> */}
+                    <p>It comes with <span className="fw-bold text-muted">1 Year Warranty</span></p>
                     <hr />
 
                     <div className="mt-4">
@@ -81,7 +84,7 @@ const ProductDetail = () => {
                             {activeTab === 'reviews' && (
                                 <div className="review-section fade-in">
                                     <div className="d-flex align-items-center mb-3">
-                                        <p className="fw-bold fs-4 m-0">Ratings & Reviews :</p>
+                                        <p className="fw-bold fs-4 m-0 text-muted">Ratings & Reviews :</p>
                                         <p className="badge bg-success mx-4 m-0">{product.rating} ★</p>
                                         <p className="m-0 text-muted">{product.reviews?.length} Ratings & Reviews</p>
                                     </div>
@@ -127,7 +130,7 @@ const ProductDetail = () => {
 
                             {activeTab === 'specs' && (
                                 <div className="">
-                                    <h4 className="fw-bold mb-3">General Specifications</h4>
+                                    <h4 className="fw-bold mb-3 text-muted">General Specifications :</h4>
                                     <table className="table table-bordered table-striped">
                                         <tbody>
                                             <tr>

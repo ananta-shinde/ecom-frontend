@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const SearchCard = ({product}) => {
     return ( 
-        <div className="card p-2">
+        <div className="card p-2 bg-light">
             <Link className="text-decoration-none text-dark" to={"/details?productId="+ product.id}>
             <div className="row align-items-center text-center">
             <div className="col-3">

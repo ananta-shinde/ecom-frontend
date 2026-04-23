@@ -41,8 +41,9 @@ const Navbar = () => {
                 <div className="position-relative w-50 d-flex border bg-white rounded">
                     <span className="p-2">{<Search />}</span>
                     <input onChange={handleSearch} className="form-control shadow-none border-0" type="text" value={inputValue} placeholder="Search product here" />
-                    <div className="d-none" ref={searchContainer} style={{maxHeight:"80vh",overflow:"scroll", overflowX: "hidden", position: "absolute",zIndex:3 , marginTop:"8%", width:"100%"}}>
-                        {products?.map((product) => <SearchCard product={product} />)}
+
+                    <div className="d-none" ref={searchContainer} style={{maxHeight:"80vh",overflow:"scroll", overflowX: "hidden", position: "absolute",zIndex:3 , marginTop:"9%", width:"100%"}}>
+                        {products && products.length > 0 ? (products?.map((product) => <SearchCard product={product} /> )) : (<div className="card text-center p-5 text-muted bg-light"><h4>No products found</h4></div>)}
                     </div>
 
                     <span><button onClick={handleClear} className="btn bg-white border-0">{<X color="red"/>}</button></span>

@@ -34,7 +34,7 @@ const ProductDetailSlider = ({ product }) => {
     }
 
     return (
-        <div className="carousel slide" id="product-detail-slider" data-bs-ride="carousel">
+        <div className="carousel slide align-content-center justify-content-center text-center" style={{minHeight : "70vh"}} id="product-detail-slider" data-bs-ride="carousel">
             <div className="carousel-indicators">
                 {carouselIndicators.map((item) => item)}
             </div>
