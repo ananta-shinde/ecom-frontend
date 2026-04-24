@@ -22,7 +22,7 @@ const ViewAllCustomers = () => {
             },
             // Note: Do NOT set 'Content-Type' header when sending FormData. 
             // The browser automatically sets it to 'multipart/form-data' with the correct boundary.
-            body: JSON.stringify({...customer,deleted:!customer.deleted }),
+            body: JSON.stringify({...customer,delxeted:!customer.deleted }),
           });
 
         //   setOffers(prev => prev.map(o => o.id === offer.id ? {...o , deleted: !o.deleted}:o))

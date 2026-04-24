@@ -25,6 +25,10 @@ import ProductForm from "../admin/components/AddProduct";
 import ViewAllSellers from "../admin/components/ViewAllSellers";
 import Checkout from "../customer/Checkout";
 import AddOffer from "../admin/components/addOffer";
+import CategoryNav from "../customer/CategoryNav";
+import HeroSection from "../customer/HeroSection";
+import FeaturedProducts from "../customer/FeaturedProducts";
+import AdminFeaturedProducts from "../admin/components/AdminFeaturedProducts";
 
 const router = createBrowserRouter([
   {
@@ -33,10 +37,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />
+        element: <Home />,
+
       },
       {
         path: "products",
+        element: <ProductListing />
+      },
+      {
+        path: "products/category/:categoryName",
         element: <ProductListing />
       },
       {
@@ -102,7 +111,12 @@ const router = createBrowserRouter([
       {
         path: "editproduct/:id",
         element: <ProductForm />
-      }
+      },
+      {
+        path: "featuredproducts",
+        element: <AdminFeaturedProducts />
+      },
+
     ]
   },
 

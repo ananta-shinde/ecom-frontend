@@ -18,6 +18,9 @@ const AdminSideNav = () => {
                        <Link to="/admin/dashboard/viewallproducts" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
                             <strong>View All Products</strong>
                         </Link>
+                       <Link to="/admin/dashboard/featuredproducts" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
+                            <strong>Featured Products</strong>
+                        </Link>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -28,7 +31,7 @@ const AdminSideNav = () => {
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                        <Link to="/admin/dashboard/addnewcategory" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
-                            <strong>Add New Categorie</strong>
+                            <strong>Add New Categories</strong>
                         </Link>
                         <Link to="/admin/dashboard/viewallcategories" className="accordion-body w-100 border-0 my-1 d-block text-decoration-none text-dark">
                             <strong>View All Categories</strong>

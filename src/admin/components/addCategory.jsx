@@ -34,15 +34,14 @@ const AddCategory = () => {
    
     var response = undefined
     try {
-      // Make the POST request to the Spring Boot backend
+    
       if(!searchparams.get("cmd") == "update"){
       response = await fetch('http://localhost:8080/api/v1/category/new', {
         method: 'POST',
         headers:{
           'Content-Type': 'application/json'
         },
-        // Note: Do NOT set 'Content-Type' header when sending FormData. 
-        // The browser automatically sets it to 'multipart/form-data' with the correct boundary.
+        
         body: JSON.stringify({name:categoryName,description}),
       });
     }else{
@@ -51,8 +50,7 @@ const AddCategory = () => {
         headers:{
           'Content-Type': 'application/json'
         },
-        // Note: Do NOT set 'Content-Type' header when sending FormData. 
-        // The browser automatically sets it to 'multipart/form-data' with the correct boundary.
+       
         body: JSON.stringify({id:searchparams.get("id"),name:categoryName,description}),
       });
     }
@@ -63,13 +61,12 @@ const AddCategory = () => {
         setMessage('Category saved successfully!');
         setIsError(false);
         
-        // Clear the form on success
         setCategoryName('');
         setDescription('');
+        setMessage('')
        
         e.target.reset(); 
       } else {
-        // Handle backend errors (e.g., status 500)
         setMessage(data.message || 'Failed to save category. Please try again.');
         setIsError(true);
       }
@@ -91,9 +88,9 @@ const AddCategory = () => {
               <h4 className="mb-0 text-center">Add New Category</h4>
             </div>
             <div className="card-body p-4">
-               {/* Status Message Alert */}
+               
                {message && (
-                <div className={`alert ${isError ? 'alert-danger' : 'alert-success'}`} role="alert">
+                <div className={`alert ${isError ? 'alert-success' : 'alert-danger'}`} role="alert">
                   {message}
                 </div>
               )}

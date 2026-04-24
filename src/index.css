@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.category-scroll-container {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.category-scroll-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.category-item {
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.category-item:hover {
+    color: #2874f0 !important;
+}
+
+.category-item:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px; 
+    left: 0;
+    background-color: #2874f0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.category-item:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
